@@ -1,0 +1,58 @@
+[db]
+   host=""
+   port=""
+   user=""
+   pass=""
+   name="video_live_cloud_platform"
+   maxConn = 2000
+   maxIdle = 1000
+
+[logs]
+level = "info"
+filename = "/data1/monitor/logs/live-monitor-httpserver.log"
+maxSize = 1000
+maxAge = 7
+
+[redis]
+addr="127.0.0.1:6379"
+password=""
+[redis.key]
+   prefix = "LCP_"
+
+[recordredis]
+addr="rm31013.hebe.grid.sina.com.cn:31013"
+password=""
+
+[logs]
+level = "info"
+filename = "/tmp/live-monitor-httpserver.log"
+maxSize = 1000
+maxAge = 7
+
+[server]
+port = ":8088"
+
+[stream]
+  [stream.input]
+  domain = "rtmp://rtmp.video.sina.com.cn"
+  [stream.output]
+  domain = "video.sina.com.cn"
+  [stream.conf]
+  definitions = "sd,hd,fhd"
+  protocols = "rtmp,hls,flv"
+
+[cutter]
+streamRetrySecs = 3
+segmentSeconds = 5
+
+[ali]
+  [ali.auth]
+  key = "x29VRDpb2C0q"
+  expires = 43200
+
+[transcode]
+  start = "http://172.16.78.119:7500/api/transcode/start"
+  stop = "http://172.16.78.119:7500/api/transcode/stop"
+
+[livego]
+   addr = "rtmp://172.16.108.54:1935/live"
